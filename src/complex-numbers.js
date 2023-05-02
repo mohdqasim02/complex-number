@@ -1,41 +1,44 @@
-const getRealPart = function(complexNum) {
-  return complexNum.real;
-};
+const complexNumber = function({realPart, imaginaryPart}) {
+  const iotaSq = -1;
 
-const getImaginaryPart = function(complexNum) {
-  return complexNum.imaginary;
-};
-
-const add = function(num1, num2) {
-  return {
-    real: num1.real + num2.real,
-    imaginary: num1.imaginary + num2.imaginary
+  const getRealPart = function() {
+    return realPart;
   };
+
+  const getImaginaryPart = function() {
+    return imaginaryPart;
+  };
+
+  const display = function() {
+    if(realPart === 0) return `${imaginaryPart}i`;
+    let imaginary = imaginaryPart;
+    let operator = '+';
+
+    if(imaginaryPart < 0) {
+      imaginary = imaginaryPart * -1;
+      operator = '-';
+    }
+    return `${realPart} ${operator} ${imaginary}i`;
+  };
+
+  const add = function(complexNumber) {
+    return {
+      real: realPart + complexNumber.getRealPart(),
+      imaginary: imaginaryPart + complexNumber.getImaginaryPart()
+    };
+  };
+
+  const multiply = function(complexNumber) {
+    let real = realPart * complexNumber.getRealPart();
+    let imaginary = realPart * complexNumber.getImaginaryPart();
+
+    real += imaginaryPart * complexNumber.getImaginaryPart() * iotaSq;
+    imaginary += imaginaryPart * complexNumber.getRealPart();
+
+    return {real, imaginary};
+  };
+
+  return {display, getImaginaryPart, getRealPart, add, multiply};
 };
 
-const multiply = function(num1, num2) {
-  let real = num1.real * num2.real;
-  let imaginary = num1.real * num2.imaginary;
-
-  real += num1.imaginary * num2.imaginary * -1;
-  imaginary += num1.imaginary * num2.real;
-
-  return {real, imaginary};
-};
-
-const display = function(complexNum) {
-  if(complexNum.real === 0) return `${complexNum.imaginary}i`;
-  let imaginaryPart = complexNum.imaginary;
-  let operator = '+';
-
-  if(complexNum.imaginary < 0) {
-    imaginaryPart = imaginaryPart * -1;
-    operator = '-';
-  }
-  return `${complexNum.real} ${operator} ${imaginaryPart}i`;
-};
-exports.add = add;
-exports.multiply = multiply;
-exports.display = display;
-exports.getRealPart = getRealPart;
-exports.getImaginaryPart = getImaginaryPart;
+exports.create = complexNumber;
