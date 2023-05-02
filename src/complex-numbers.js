@@ -1,6 +1,3 @@
-const complexNumber = function() {
-  const iotaSq = -1;
-};
 const getRealPart = function(complexNum) {
   return complexNum.real;
 };
@@ -37,7 +34,6 @@ const display = function(complexNum) {
   }
   return `${complexNum.real} ${operator} ${imaginaryPart}i`;
 };
-
 exports.add = add;
 exports.multiply = multiply;
 exports.display = display;
