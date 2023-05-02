@@ -18,15 +18,24 @@ const add = function(num1, num2) {
 
 const multiply = function(num1, num2) {
   let real = num1.real * num2.real;
-  real += num1.imaginary * num2.imaginary * -1;
   let imaginary = num1.real * num2.imaginary;
+
+  real += num1.imaginary * num2.imaginary * -1;
   imaginary += num1.imaginary * num2.real;
 
   return {real, imaginary};
 };
 
 const display = function(complexNum) {
-  return `${complexNum.real} + ${complexNum.imaginary}i`;
+  if(complexNum.real === 0) return `${complexNum.imaginary}i`;
+  let imaginaryPart = complexNum.imaginary;
+  let operator = '+';
+
+  if(complexNum.imaginary < 0) {
+    imaginaryPart = imaginaryPart * -1;
+    operator = '-';
+  }
+  return `${complexNum.real} ${operator} ${imaginaryPart}i`;
 };
 
 exports.add = add;

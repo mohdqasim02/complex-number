@@ -36,8 +36,16 @@ describe('complex-numbers', function() {
   });
 
   describe('display', function() {
-    it('should display', function() {
+    it('should give a complex number in a string', function() {
       deepStrictEqual(display({real: 4, imaginary: 5}), '4 + 5i');
+    });
+
+    it('should give a complex number in a string', function() {
+      deepStrictEqual(display({real: 0, imaginary: 5}), '5i');
+    });
+
+    it('should give a complex number in a string', function() {
+      deepStrictEqual(display({real: 1, imaginary: -5}), '1 - 5i');
     });
   });
 });
