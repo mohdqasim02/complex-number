@@ -30,21 +30,21 @@ describe('complexNumber', function() {
 
   describe('add', function() {
     it('should give sum', function() {
-      deepStrictEqual(c1.add(c3), {real: 6, imaginary: 8});
+      deepStrictEqual(c1.add(c3).display(), '6 + 8i');
     });
 
     it('should give sum', function() {
-      deepStrictEqual(c3.add(c4), {real: 8, imaginary: -2});
+      deepStrictEqual(c3.add(c4).display(), '8 - 2i');
     });
   });
 
   describe('multiply', function() {
     it('should give product', function() {
-      deepStrictEqual(c1.multiply(c3), {real: -7, imaginary: 22});
+      deepStrictEqual(c1.multiply(c3).display(), '-7 + 22i');
     });
 
     it('should give product', function() {
-      deepStrictEqual(c1.multiply(c2), {real: -9, imaginary: 6});
+      deepStrictEqual(c1.multiply(c2).display(), '-9 + 6i');
     });
   });
 

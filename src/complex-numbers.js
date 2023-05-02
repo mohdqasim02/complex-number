@@ -21,21 +21,21 @@ const complexNumber = function({realPart, imaginaryPart}) {
     return `${realPart} ${operator} ${imaginary}i`;
   };
 
-  const add = function(complexNumber) {
-    return {
-      real: realPart + complexNumber.getRealPart(),
-      imaginary: imaginaryPart + complexNumber.getImaginaryPart()
-    };
+  const add = function(num) {
+    return complexNumber({
+      realPart: realPart + num.getRealPart(),
+      imaginaryPart: imaginaryPart + num.getImaginaryPart()
+    });
   };
 
-  const multiply = function(complexNumber) {
-    let real = realPart * complexNumber.getRealPart();
-    let imaginary = realPart * complexNumber.getImaginaryPart();
+  const multiply = function(num) {
+    let real = realPart * num.getRealPart();
+    let imaginary = realPart * num.getImaginaryPart();
 
-    real += imaginaryPart * complexNumber.getImaginaryPart() * iotaSq;
-    imaginary += imaginaryPart * complexNumber.getRealPart();
+    real += imaginaryPart * num.getImaginaryPart() * iotaSq;
+    imaginary += imaginaryPart * num.getRealPart();
 
-    return {real, imaginary};
+    return complexNumber({realPart: real, imaginaryPart: imaginary});
   };
 
   return {display, getImaginaryPart, getRealPart, add, multiply};
