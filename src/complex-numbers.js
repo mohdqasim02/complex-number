@@ -1,4 +1,4 @@
-const complexNumber = function({realPart, imaginaryPart}) {
+const complexNumber = function(realPart, imaginaryPart) {
   const getRealPart = function() {
     return realPart;
   };
@@ -7,27 +7,27 @@ const complexNumber = function({realPart, imaginaryPart}) {
     return imaginaryPart;
   };
 
-  const stringify = function() {
+  const getComplexNum = function() {
     if(realPart === 0) return `${imaginaryPart}i`;
     let operator = imaginaryPart > 0 ? '+' : '';
     return `${realPart}${operator}${imaginaryPart}i`;
   };
 
   const add = function(num) {
-    return complexNumber({
-      realPart: realPart + num.getRealPart(),
-      imaginaryPart: imaginaryPart + num.getImaginaryPart()
-    });
+    const real = realPart + num.getRealPart();
+    const imaginary = imaginaryPart + num.getImaginaryPart();
+
+    return complexNumber(real, imaginary);
   };
 
   const multiply = function(num) {
-    let real = realPart * num.getRealPart() - imaginaryPart * num.getImaginaryPart(); 
-    let imaginary = realPart * num.getImaginaryPart() + imaginaryPart * num.getRealPart();
+    const real = realPart * num.getRealPart() - imaginaryPart * num.getImaginaryPart(); 
+    const imaginary = realPart * num.getImaginaryPart() + imaginaryPart * num.getRealPart();
 
-    return complexNumber({realPart: real, imaginaryPart: imaginary});
+    return complexNumber(real, imaginary);
   };
 
-  return {stringify, getImaginaryPart, getRealPart, add, multiply};
+  return {getComplexNum, getImaginaryPart, getRealPart, add, multiply};
 };
 
-exports.create = complexNumber;
+exports.complexNumber = complexNumber;

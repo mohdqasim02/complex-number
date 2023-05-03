@@ -1,12 +1,12 @@
 const {it, describe} = require('node:test');
 const {strictEqual, deepStrictEqual} = require('assert');
-const complexNumber = require('../src/complex-numbers.js');
+const {complexNumber} = require('../src/complex-numbers.js');
 
 describe('complexNumber', function() {
-  const c1 = complexNumber.create({realPart: 2, imaginaryPart: 3});
-  const c2 = complexNumber.create({realPart: 0, imaginaryPart: 3});
-  const c3 = complexNumber.create({realPart: 4, imaginaryPart: 5});
-  const c4 = complexNumber.create({realPart: 4, imaginaryPart: -7});
+  const c1 = complexNumber(2, 3);
+  const c2 = complexNumber(0, 3);
+  const c3 = complexNumber(4, 5);
+  const c4 = complexNumber(4, -7);
 
   describe('getRealPart', function() {
     it('should give real part', function() {
@@ -30,35 +30,35 @@ describe('complexNumber', function() {
 
   describe('add', function() {
     it('should give sum', function() {
-      deepStrictEqual(c1.add(c3).stringify(), '6+8i');
+      deepStrictEqual(c1.add(c3).getComplexNum(), '6+8i');
     });
 
     it('should give sum', function() {
-      deepStrictEqual(c3.add(c4).stringify(), '8-2i');
+      deepStrictEqual(c3.add(c4).getComplexNum(), '8-2i');
     });
   });
 
   describe('multiply', function() {
     it('should give product', function() {
-      deepStrictEqual(c1.multiply(c3).stringify(), '-7+22i');
+      deepStrictEqual(c1.multiply(c3).getComplexNum(), '-7+22i');
     });
 
     it('should give product', function() {
-      deepStrictEqual(c1.multiply(c2).stringify(), '-9+6i');
+      deepStrictEqual(c1.multiply(c2).getComplexNum(), '-9+6i');
     });
   });
 
-  describe('stringify', function() {
+  describe('getComplexNum', function() {
     it('should give a complex number in a string', function() {
-      deepStrictEqual(c3.stringify(), '4+5i');
+      deepStrictEqual(c3.getComplexNum(), '4+5i');
     });
 
     it('should give a complex number in a string', function() {
-      deepStrictEqual(c2.stringify(), '3i');
+      deepStrictEqual(c2.getComplexNum(), '3i');
     });
 
     it('should give a complex number in a string', function() {
-      deepStrictEqual(c4.stringify(), '4-7i');
+      deepStrictEqual(c4.getComplexNum(), '4-7i');
     });
   });
 });
