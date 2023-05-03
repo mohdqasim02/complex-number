@@ -30,35 +30,35 @@ describe('complexNumber', function() {
 
   describe('add', function() {
     it('should give sum', function() {
-      deepStrictEqual(c1.add(c3).display(), '6 + 8i');
+      deepStrictEqual(c1.add(c3).stringify(), '6+8i');
     });
 
     it('should give sum', function() {
-      deepStrictEqual(c3.add(c4).display(), '8 - 2i');
+      deepStrictEqual(c3.add(c4).stringify(), '8-2i');
     });
   });
 
   describe('multiply', function() {
     it('should give product', function() {
-      deepStrictEqual(c1.multiply(c3).display(), '-7 + 22i');
+      deepStrictEqual(c1.multiply(c3).stringify(), '-7+22i');
     });
 
     it('should give product', function() {
-      deepStrictEqual(c1.multiply(c2).display(), '-9 + 6i');
+      deepStrictEqual(c1.multiply(c2).stringify(), '-9+6i');
     });
   });
 
-  describe('display', function() {
+  describe('stringify', function() {
     it('should give a complex number in a string', function() {
-      deepStrictEqual(c3.display(), '4 + 5i');
+      deepStrictEqual(c3.stringify(), '4+5i');
     });
 
     it('should give a complex number in a string', function() {
-      deepStrictEqual(c2.display(), '3i');
+      deepStrictEqual(c2.stringify(), '3i');
     });
 
     it('should give a complex number in a string', function() {
-      deepStrictEqual(c4.display(), '4 - 7i');
+      deepStrictEqual(c4.stringify(), '4-7i');
     });
   });
 });
